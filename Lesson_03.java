@@ -1,14 +1,14 @@
 package ru.foxit.grayfox;
 
 /**
- * Author Exercise1.java - GrayFox | Ilya Lisin
+ * Author Lesson_03.java - GrayFox | Ilya Lisin
  * Contact: Skype: foxygameskype | Telegram: +7(925)316-65-82 | vk: https://vk.com/exsperto1
  * GitHub: https://github.com/FoxITeam and https://github.com/GrayFoxIT
  * encoding: UTF-8, Comments, remarks in Russian.
  */
 
-import java.util.Arrays;
-import java.util.Random;
+import java.text.MessageFormat;
+import java.util.Scanner;
 
 /**
  * Важные заметки, которые очень пригодятся на следующих занятиях.
@@ -69,31 +69,55 @@ import java.util.Random;
  * + todo | // а toString пишется, когда одномерный массив!
  */
 
-public class Exercise1 {
+
+
+// ctrl + Alt + M - Прежде выделяем область и комбинацию. Она может выделенный фрагмент кода экстрактить в отдельный элемент кода.
+
+public class Lesson_03 {
     public static void main(String[] args) {
-        int[] binaryArray = new int[8]; // Создаем массив, называем его бинарныйМассив и на 8 ячеек (размерностью 8)
-        Random random = new Random(); // Создаем переменную класса Random
-        // В цикле по длине массива проходимся по каждому элементу и в каждый элемент устанавливаем рандомное значение
-        for (int i = 0; i < binaryArray.length; i++)  // Мы идем по массиву, если массив не заполнен, генерируем рандом число.
-            binaryArray[i] = random.nextInt(2);
-        System.out.println("Инициализируем массив:\n" + Arrays.toString(binaryArray));
+        //HelloSombody();
+        System.out.println(HelloSombody());
+        //printNumbers();
+    }
 
+    // Некоторый код требует чтобы его писали в блоке кода трай кетч
+    // Безопасным считается код, который проверяется на наличие исключений (ошибок).
+    // Не безопасным считается код, который не проверяетмя, но может бросить исключения (ошибки).
+    // не безопасный код нужно писать Try catch, - попробовать try сделать что либо, если это не получиться
+    // catch - перехватить вылетевший экзепшен.
+    private static String HelloSombody() {
+        Scanner scanner = new Scanner(System.in); // Подобный запрос информации у человека только нужен исключительно в обучающих целях
+        // Нас познакомят с другими методами, которые выполняют такую же функцию.
+        System.out.println("Введите свое имя:"); // Выводим в консоль сообщение для человека - что мы от него хотим получить!
+        String str = scanner.nextLine(); // Привязываем к стринговой переменной наш сканер.nextLine();
+        String str2 = scanner.nextLine();
+        // nextLine читает строку, так же у него есть метод
+        //System.out.println("Привет, " + str);
+        // Что такое форматированный ввод: Один из вариантов форматированного ввода в джаве
+        // Класс MessageFormat и его статический метод format позволяет подставлять аргументы
+        // переданные в данный метод. Данный метод формат уже принимает 2 аргумента (строку Pattern и имя str)
+        // Pattern = шаблон, это шаблон проектирования или паттер проектирования.
+        return MessageFormat.format("Привет, {0} + {1}", str, str2);
+    }
 
-        for (int i = 0; i < binaryArray.length; i++) // Мы идем по массиву, заменяем 0 на единицу.
-            binaryArray[i] = (binaryArray[i] == 0) ? 1 : 0;
-        // Вернуть true (До двоеточие) - если это условие выполняется - один.
-        // Вернуть false (После двоеточние) - в противном случае - ноль.
-        //
-        // Чтобы понять что внутри цикла, то вот как оно будет выглядеть иначе:
-        /**
-         * if (binaryArray[i] == 0) {
-         *             binaryArray[i] = 1;
-         *         } else {
-         *             binaryArray[i] = 0;
-         *         }
-         */
+    private static void printNumbers() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Введите число:");
+        int num = scanner.nextInt();
+        System.out.println("Ваш порядковый номер: "+ num);
+    }
 
+    // Ниже то что calculate является одинаковыми, не говорит о том, что они одинаковые.
+    // У них разная сигнатура
+    // Сигнатура метода состоит из уровня доступа, возвращаемого значения, имени и его аргументов.
+    // отличии могут быть в названии метода и кол-ве и расположении аргуметов.
+    // но если нам нужно вызвать 1 из 2 методов, нам нужно указать какие параметры нам нужны, чтобы вызвать именно
+    // тот метод, который нам нужно.
+    // но и это называется множественная реализация, а перегрузка методов называется, если это происходит в наследниках.
+    public static void calculate(double numb1, double numbs2){
 
-        System.out.println("Инициализируем массив:\n" + Arrays.toString(binaryArray));
+    }
+    public static void calculate(double numb1, double numbs2, double numbs3){
+
     }
 }

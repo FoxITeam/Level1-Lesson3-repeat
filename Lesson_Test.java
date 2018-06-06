@@ -1,14 +1,11 @@
 package ru.foxit.grayfox;
 
 /**
- * Author Exercise1.java - GrayFox | Ilya Lisin
+ * Author Lesson_Test.java - GrayFox | Ilya Lisin
  * Contact: Skype: foxygameskype | Telegram: +7(925)316-65-82 | vk: https://vk.com/exsperto1
  * GitHub: https://github.com/FoxITeam and https://github.com/GrayFoxIT
  * encoding: UTF-8, Comments, remarks in Russian.
  */
-
-import java.util.Arrays;
-import java.util.Random;
 
 /**
  * Важные заметки, которые очень пригодятся на следующих занятиях.
@@ -69,31 +66,35 @@ import java.util.Random;
  * + todo | // а toString пишется, когда одномерный массив!
  */
 
-public class Exercise1 {
+public class Lesson_Test {
     public static void main(String[] args) {
-        int[] binaryArray = new int[8]; // Создаем массив, называем его бинарныйМассив и на 8 ячеек (размерностью 8)
-        Random random = new Random(); // Создаем переменную класса Random
-        // В цикле по длине массива проходимся по каждому элементу и в каждый элемент устанавливаем рандомное значение
-        for (int i = 0; i < binaryArray.length; i++)  // Мы идем по массиву, если массив не заполнен, генерируем рандом число.
-            binaryArray[i] = random.nextInt(2);
-        System.out.println("Инициализируем массив:\n" + Arrays.toString(binaryArray));
+        int[] array = {1, 2, 3, 4, 5};
+        printIDArray(array);
+    }
 
+    // Для того, чтобы обратиться к методу другого класса, нужно написать класс точка и название метода.
+    // Если этот метод не статический, то нужно создать экземпляр класса "new", если же он статический, то
+    // к нему достаточно обратиться через точку.
+    public static void printIDArray(int[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            System.out.println(arr[i] + " ");
+        }
+        System.out.println();
+    }
 
-        for (int i = 0; i < binaryArray.length; i++) // Мы идем по массиву, заменяем 0 на единицу.
-            binaryArray[i] = (binaryArray[i] == 0) ? 1 : 0;
-        // Вернуть true (До двоеточие) - если это условие выполняется - один.
-        // Вернуть false (После двоеточние) - в противном случае - ноль.
-        //
-        // Чтобы понять что внутри цикла, то вот как оно будет выглядеть иначе:
-        /**
-         * if (binaryArray[i] == 0) {
-         *             binaryArray[i] = 1;
-         *         } else {
-         *             binaryArray[i] = 0;
-         *         }
-         */
-
-
-        System.out.println("Инициализируем массив:\n" + Arrays.toString(binaryArray));
+    // Метод внутри метода нельзя, за то метод внутри класс, внутри класса метод и так далее можно!
+    // Правда страдает область видимости... не знаю для чего такое пригодиться, но я думаю, что
+    // когда нибудь я с этим столкнусь!
+    public static void method() {
+        class Lesson_Test2 {
+            public void test() {
+                class Lesson_Test3 {
+                    public void testTwo(){
+                        System.out.println(" ");
+                    }
+                }
+            }
+        }
     }
 }
+
